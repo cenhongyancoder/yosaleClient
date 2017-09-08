@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link rel="icon" href="img/favicon.ico">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/ebiconfont/css/ebwebfont.css">
+    <!--  <link rel="stylesheet" href="css/ebiconfont/css/ebwebfont.css">
+     <link rel="stylesheet" href="css/global.css">-->
+    <link href="css/frames_page.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        input {
+            padding-left: 8px;
+            height: 35px;
+        }
+
+        select {
+            width: 25%;
+            margin-top: 8px;
+            padding-bottom: 5px;
+        }
+
+        .clearfix {
+            clear: both;
+        }
+
+        .panel-body ul li {
+            padding: 4px 16px;
+            border: 1px solid #f0832d;
+            margin-right: 8px;
+            margin-top: 8px;
+            color: #f0832d;
+        }
+        .panel-body ul{
+            overflow: hidden;
+        }
+
+        textarea {
+            width: 100%;
+            outline: none;
+            height: 100px;
+            padding-left: 8px;
+        }
+        input[type=radio] {
+            position: relative;
+            /* bottom: 0px; */
+            top: 194px;
+            left: 62px;
+        }
+        .panel{
+            margin-bottom: 10px;
+        }
+        input[type="checkbox"], input[type="radio"] {
+            position: absolute;
+            clip: rect(0,0,0,0);
+        }
+        input[type="checkbox"] + label, input[type="radio"] + label {
+            font-weight: normal;
+            padding-left: 19px;
+            position: relative;
+            margin: 0;
+        }
+        input[type="checkbox"] + label:before, input[type="radio"] + label:before {
+            content: '\a0';
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-radius: 2px;
+            background: #fff;
+            text-indent: .15em;
+            line-height: .65;
+            border: 1px solid #505050;
+            overflow: hidden;
+            position: absolute;
+            top: 3px;
+            left: 0;
+        }
+        input[type="checkbox"]:checked + label::before, input[type="radio"]:checked + label::before {
+            content: '\2713';
+            background: #f0832d;
+            border: 1px solid #f0832d;
+            color: #fff;
+        }
+        .ui-upload-append2 div {
+            width: 200px;
+            height: 300px;
+            margin: 2px;
+            float: left;
+            position: relative;
+            margin-left: 10px;
+        }
+        .single-upload-btn {
+            font-size: 18px;
+            font-weight: bold;
+            border: 1px solid #CCC;
+            width: 168px;
+            height: 126px;
+            line-height: 113px;
+        }
+        .single-upload-btn i {
+            display: block;
+            color: #999;
+            font-size: 60px;
+            width: 125px;
+            height: 46px;
+        }
+        .single-upload-btn2 {
+            font-size: 18px;
+            font-weight: bold;
+            border: 1px solid #CCC;
+            width: 168px;
+            height: 126px;
+            line-height: 113px;
+        }
+        .single-upload-btn2 i {
+            display: block;
+            color: #999;
+            font-size: 60px;
+            width: 125px;
+            height: 109px;
+        }
+        .introduce .single-upload-btn i {
+            display: block;
+            color: #999;
+            font-size: 38px;
+            width: 125px;
+            height: 56px;
+        }
+        .introduce .glyphicon {
+            top: 39px;
+            left: 23px;
+        }
+        .introduce .ui-upload-append div {
+            width: 200px;
+            height: 200px;
+            margin: 2px;
+            float: left;
+            position: relative;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+        }
+
+           img{
+            width: 100%;
+            height:100%;
+        }
+       .show .glyphicon-remove-circle{
+           top: -294px;
+           left: 171px;
+           color: #f0832d;
+           font-size: 24px;
+        }
+        .introduce .glyphicon-remove-circle{
+            top: -193px;
+            left: 169px;
+            color: #f0832d;
+            font-size: 24px;
+        }
+        .btn:hover, .btn:focus, .btn.focus {
+            color: #fff;
+            /* text-decoration: none; */
+        }
+    </style>
+</head>
+<body>
+<div class="settings-pane">
+    <a href="#" data-toggle="settings-pane" data-animate="true">&times;</a>
+    <div class="settings-pane-inner with-animation visible"></div>
+</div>
+<div class="page-container">
+    <div class="sidebar-menu fixed">
+        <div class="logo-env clearfix"></div>
+        <div class="sidebar-menu-inner"></div>
+        <div class="company-copyright"></div>
+    </div>
+    <div id="main-content">
+        <div class="container">
+            <div class="row">
+                <div id="content" class="col-lg-12 col-md-12">
+                    <div class="row">
+                        <nav class="nav user-info-nav">
+                            <div class="page-breadcrumb pull-left">
+                                <ul class="breadcrumb">
+                                    <li><a href="#" class="home-page-bread">首页</a></li>
+                                    <li><a href="#" onclick="history.go(-1)">返回上页</a></li>
+                                    <li><a href="#">发布商品</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="row">
+                        <div class="other-function margin">
+                         <!--   <button class="btn-bg btn pull-right btn-confirm">确认发布</button>-->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <!--begin-->
+                            <div class="page-body sys-cont pro-add" style="margin-top: 10px;margin-right: 8px">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            基本属性
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div style="overflow: hidden">
+                                            <div class="col-xs-4 col-lg-4">
+                                                <label for="num" class="margin-right">商品编号:</label>
+                                                <input id="num" type="text" class="da-pro-num" placeholder="请输入商品编号">
+                                            </div>
+                                            <div class="col-xs-4 col-lg-4">
+                                                <label for="name" class="margin-right">商品名称:</label>
+                                                <input id="name" type="text" class="da-pro-name" placeholder="请输入商品名称">
+                                            </div>
+                                            <div class="col-xs-4 col-lg-4 " id="classify">
+                                                <span>分类：</span>
+                                                <select class="prov"></select>
+                                                <select class="city" disabled="disabled"></select>
+                                                <select class="dist" disabled="disabled"></select>
+                                            </div>
+
+                                        </div>
+                                        <div class=" margin-top">
+
+                                            <div class="col-lg-4 col-xs-4">
+                                                <input type="checkbox" class="da-ishot" id="sale">
+                                                <label for="sale">是否热销</label>
+                                            </div>
+                                            <div class="col-lg-4 col-xs-4">
+                                                <input type="checkbox" class="da-isnew" id="new">
+                                                <label for="new">是否新品</label>
+                                            </div>
+                                            <div class="col-lg-4 col-xs-4">
+                                                <input type="checkbox" class="da-iscu" id="promotion">
+                                                <label for="promotion">是否促销</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            价格信息
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div>
+                                            <div class="col-xs-4 col-lg-4">
+                                                <label for="price" class="margin-right">商品价格:</label>
+                                                <input id="price" type="text" class="da-pro-price" placeholder="请输入商品价格">
+                                            </div>
+                                            <div class="col-xs-4 col-lg-4">
+                                                <label for="cost" class="margin-right">商品原价:</label>
+                                                <input id="cost" type="text" class="da-origin-price" placeholder="请输入商品原价">
+                                            </div>
+                                            <div class="col-xs-4 col-lg-4">
+                                                <label for="buyprice" class="margin-right">商品进货价:</label>
+                                                <input id="buyprice" type="text" class="da-buying-price" placeholder="请输入商品进货价">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            数量信息
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div>
+                                            <div class="col-xs-4 col-lg-4">
+                                                <label for="stock" class="margin-right">商品库存:</label>
+                                                <input id="stock" type="text" class="da-stock" placeholder="请输入商品库存">
+                                            </div>
+                                            <div class="col-xs-4 col-lg-4">
+                                                <label for="quantity" class="margin-right">起订量:</label>
+                                                <input id="quantity" type="text" class="da-mininum" placeholder="请输入起订量">
+                                            </div>
+                                            <div class="col-xs-4 col-lg-4" style="margin-top: 8px">
+                                                <label class="margin-right">销量:<span class="da-sale-qty"></span></label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            描述信息
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body" style="margin-left: 15px">
+                                        <button class="btn-bg btn pull-left btn-add-select" data-toggle="modal" data-target="#myModal">
+                                            新增选择项
+                                        </button>
+                                        <div class="clearfix add-selected">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            参数信息
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body propertyties">
+                                        <div class="">
+                                            <div class="col-lg-4 col-xs-4 " style="margin-top: 4px">
+                                                属性名:
+                                            </div>
+                                            <div class="col-lg-4 col-xs-4 " style="margin-top: 4px">
+                                                属性描述
+                                            </div>
+                                            <div class="col-lg-4 col-xs-4">
+                                                <button class="btn-bg btn btn-add-properties" data-toggle="modal" data-target="#myModal">新增属性</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default introduce">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            展示图片<span class="color-price" style="margin-left: 16px;">图片请注意图片上传宽高比为1:1</span>
+                                        </h3>
+                                    </div>
+                                  <!--  <div class="panel-body ui-upload-group upload-imgs imgs clearfix" imageType="1"
+                                         imageSize="1" imgList="imgList" style="margin-left: 15px">-->
+                                      <div class="panel-body ui-upload-append upload-imgs imgs clearfix" imageType="1"
+                                    imageSize="1" imgList="imgList" style="margin-left: 15px">
+
+                                      </div>
+                             <!--       <div class="panel-body clearfix show-img">
+                                        <img class="ui-upload headPortrait" title="" imageSrc="" imageId="" imageType="2" imageSize="2" src="img/upload.png" style="width:150px;height:150px;" />
+                                    </div>-->
+
+                                </div>
+                                <div class="panel panel-default show">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            介绍图片  <span  class="color-price" style="margin-left: 16px;">图片请注意图片上传宽高比为2:3</span>
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body ui-upload-append2 upload-imgs imgs  clearfix" imageType="1"
+                                         imageSize="1" imgList="imgList" style="margin-left: 15px">
+
+                                    </div>
+                                  <!--  <div class="panel-body ui-upload-group2 upload-imgs2 clearfix" imageType="1"
+                                         imageSize="1"  style="margin-left: 15px">
+                                    </div>-->
+                                <!--    <div class="panel-body clearfix introduce">
+                                        <img class="ui-upload headPortrait" title="" imageSrc="" imageId="" imageType="2" imageSize="2" src="img/upload.png" style="width:100px;height:150px;" />
+                                    </div>-->
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            详细说明
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body" style="margin-left: 15px">
+                                       <textarea class="da-pro-desc">
+
+                                       </textarea>
+
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="col-lg-6"></div>
+                                    <div class="col-lg-3">  </div>
+                                    <div class="col-lg-3">
+                                        <button class="btn-bg btn pull-right margin-top btn-confirm">确认发布</button>
+                                        <button  class="btn-bg btn  btn-confirm pull-right" style=" margin-right: 22px;margin-top: 16px;">保存</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--end-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="top: 50px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close  btn-close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    请输入选择项
+                </h4>
+            </div>
+            <div class="modal-body clearfix input-style">
+
+                <div class="clearfix">
+                    <div class="col-lg-2 col-xs-2 css-name" style="line-height: 2.5">名称:</div>
+                    <div class="col-lg-10 col-xs-10">
+                        <input type="text" class="da-input da-name">
+                    </div>
+                </div>
+                <div class="margin-top clearfix input-css">
+                    <div class="col-lg-2 col-xs-2 css-number" style="line-height: 2.5">可选数量:</div>
+                    <div class="col-lg-10 col-xs-10">
+                        <input type="text" class="da-input da-num">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-close" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary btn-commit">
+                    确认
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/es/index.js" type="application/javascript"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/TweenMax.min.js"></script>
+<script type="text/javascript" src="js/frames_page.js"></script>
+<script type="text/javascript" src="js/template.js"></script>
+<script type="text/javascript" src="js/es/index.js"></script>
+<script type="text/javascript" src="js/select.js"></script>
+<script id="selectList" type="text/html">
+    {{each list as value}}
+     <div class="select-list">
+         <p class="margin-top clearfix" data-count="{{value.chooseCount}}">{{value.groupName}}:</p>
+         <ul>
+             {{each value.optionProductInfo as child}}
+             <li  onclick="del(this)">{{child.optName}}</li>
+             {{/each}}
+             <li class="add-click" data-toggle="modal" data-target="#myModal" onclick="add(this)">+</li>
+         </ul>
+     </div>
+    {{/each}}
+</script>
+<script id="propertyList" type="text/html">
+    {{each list as value}}
+    <div class="clearfix property-list">
+        <p class="col-lg-4 col-xs-4">{{value.propName}}</p>
+        <p class="col-lg-4 col-xs-4">{{value.propValue}}</p>
+        <p class="col-lg-4 col-xs-4"></p>
+    </div>
+    {{/each}}
+</script>
+<script>
+    var flag = '',_this;
+    var imgList = [],classData = {};
+    var pid = MOPG['pid'] || 0;
+    var introduceImgs = [];
+    var data2 = {
+        "keyid": "dd",
+        "memberCode": "665545",
+        "imgUrl": "ooo.jpg",
+        "prodCode": "1",
+        "prodName": "开关",
+        "prodPrice": "20",
+        "originalPrice": "10",
+        "buyingPrice": "1",
+        "prodQty": "1000",
+        "saleQty": "20",
+        "minimum": "10",
+        "prodDesc": "家啦",
+        "displayStatus": true,
+        "productGroupInfo": {
+            "rcd": "00",
+            "rmk": "",
+            "actDate": "",
+            "sessionId": "",
+            "imeCode": "",
+            "nkName": "",
+            "topProductGroup": [{
+                "parentProductGroupInfo": {
+                    "keyid": "402871d45e2ba07b015e2ba0c11f0002",
+                    "grpName": "衣服",
+                    "imgUrl": "",
+                    "grpCode": "0001",
+                    "childQty": 0,
+                    "parentKeyid": "",
+                    "memberCode": "M9999999999999",
+                    "level": "1",
+                    "yoShopProdGroupInfoNext": null
+                },
+                "listChildGroupInfo": [{
+                    "parentProductGroupInfo": {
+                        "keyid": "402871d45e2c28c3015e2c3471a90001",
+                        "grpName": "ssss",
+                        "imgUrl": "",
+                        "grpCode": "0001001",
+                        "childQty": 0,
+                        "parentKeyid": "402871d45e2ba07b015e2ba0c11f0002",
+                        "memberCode": "M9999999999999",
+                        "level": "2",
+                        "yoShopProdGroupInfoNext": null
+                    }, "listChildGroupInfo": [{
+                        "parentProductGroupInfo": {
+                            "keyid": "402871d45e2c28c3015e2c3471a90001",
+                            "grpName": "ssss",
+                            "imgUrl": "",
+                            "grpCode": "0001001",
+                            "childQty": 0,
+                            "parentKeyid": "402871d45e2ba07b015e2ba0c11f0002",
+                            "memberCode": "M9999999999999",
+                            "level": "2",
+                            "yoShopProdGroupInfoNext": null
+                        }, "listChildGroupInfo": []
+                    }, {
+                        "parentProductGroupInfo": {
+                            "keyid": "402871d45e2c28c3015e2c9736590002",
+                            "grpName": "T恤",
+                            "imgUrl": "",
+                            "grpCode": "0001002",
+                            "childQty": 0,
+                            "parentKeyid": "402871d45e2ba07b015e2ba0c11f0002",
+                            "memberCode": "M9999999999999",
+                            "level": "2",
+                            "yoShopProdGroupInfoNext": null
+                        }, "listChildGroupInfo": []
+                    }]
+                }, {
+                    "parentProductGroupInfo": {
+                        "keyid": "402871d45e2c28c3015e2c9736590002",
+                        "grpName": "T恤",
+                        "imgUrl": "",
+                        "grpCode": "0001002",
+                        "childQty": 0,
+                        "parentKeyid": "402871d45e2ba07b015e2ba0c11f0002",
+                        "memberCode": "M9999999999999",
+                        "level": "2",
+                        "yoShopProdGroupInfoNext": null
+                    }, "listChildGroupInfo": []
+                }]
+            }, {
+                "parentProductGroupInfo": {
+                    "keyid": "402871d45e2ba07b015e2be523a60003",
+                    "grpName": "鞋子",
+                    "imgUrl": "",
+                    "grpCode": "0002",
+                    "childQty": 0,
+                    "parentKeyid": "",
+                    "memberCode": "M9999999999999",
+                    "level": "1",
+                    "yoShopProdGroupInfoNext": null
+                }, "listChildGroupInfo": []
+            }, {
+                "parentProductGroupInfo": {
+                    "keyid": "402871d45e2ba07b015e2c19432c0004",
+                    "grpName": "女装",
+                    "imgUrl": "",
+                    "grpCode": "0003",
+                    "childQty": 0,
+                    "parentKeyid": "",
+                    "memberCode": "M9999999999999",
+                    "level": "1",
+                    "yoShopProdGroupInfoNext": null
+                }, "listChildGroupInfo": []
+            }, {
+                "parentProductGroupInfo": {
+                    "keyid": "402871d45e2ba07b015e2c19ad8b0005",
+                    "grpName": "女装",
+                    "imgUrl": "",
+                    "grpCode": "0004",
+                    "childQty": 0,
+                    "parentKeyid": "",
+                    "memberCode": "M9999999999999",
+                    "level": "1",
+                    "yoShopProdGroupInfoNext": null
+                }, "listChildGroupInfo": []
+            }, {
+                "parentProductGroupInfo": {
+                    "keyid": "402871d45e2c1fb9015e2c23432d0001",
+                    "grpName": "男装",
+                    "imgUrl": "",
+                    "grpCode": "0005",
+                    "childQty": 0,
+                    "parentKeyid": "",
+                    "memberCode": "M9999999999999",
+                    "level": "1",
+                    "yoShopProdGroupInfoNext": null
+                }, "listChildGroupInfo": []
+            }, {
+                "parentProductGroupInfo": {
+                    "keyid": "402871d45e2c1fb9015e2c2586570002",
+                    "grpName": "cc",
+                    "imgUrl": "",
+                    "grpCode": "0006",
+                    "childQty": 0,
+                    "parentKeyid": "",
+                    "memberCode": "M9999999999999",
+                    "level": "1",
+                    "yoShopProdGroupInfoNext": null
+                }, "listChildGroupInfo": []
+            }]
+        },
+        "hotSaleStatus": true,
+        "promotionStatus": false,
+        "newProdStatus": false,
+        "prodImgAry": [{
+            "keyid": "1123",
+            "imgUrl": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1504542052431&di=ce37010db233c1f4b0e656bc9ffd0783&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172437_NzmyY.jpeg",
+            "imgDesc": "haoha",
+            "smallImgUrl": "0000.jpg",
+            "defaultImg": true
+        }, {"keyid": "1123", "imgUrl": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1504542052431&di=ce37010db233c1f4b0e656bc9ffd0783&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172437_NzmyY.jpeg", "imgDesc": "haoha", "smallImgUrl": "0000.jpg", "defaultImg": true}],
+        "prodIntrodImgAry": [{
+            "keyid": "1123",
+            "imgUrl": "",
+            "imgDesc": "haoha",
+            "smallImgUrl": "0000.jpg",
+            "defaultImg": true
+        }, {"keyid": "1123", "imgUrl": "", "imgDesc": "haoha", "smallImgUrl": "0000.jpg", "defaultImg": true}],
+        "optGroupInfoAry": [{
+            "keyid": "122",
+            "memberCode": "665545",
+            "groupName": "规格",
+            "chooseCount": "2",
+            "optionProductInfo": [{
+                "optKeyid": "12",
+                "optName": "小",
+                "optCode": "123",
+                "optUrl": "1222.jpg",
+                "priceValue": "10",
+                "qty": "0",
+                "prodscn": "0"
+            }, {
+                "optKeyid": "12",
+                "optName": "小",
+                "optCode": "123",
+                "optUrl": "1222.jpg",
+                "priceValue": "10",
+                "qty": "0",
+                "prodscn": "0"
+            }, {
+                "optKeyid": "12",
+                "optName": "小",
+                "optCode": "123",
+                "optUrl": "1222.jpg",
+                "priceValue": "10",
+                "qty": "0",
+                "prodscn": "0"
+            }]
+        }, {
+            "keyid": "122",
+            "memberCode": "665545",
+            "groupName": "规格",
+            "chooseCount": "2",
+            "optionProductInfo": [{
+                "optKeyid": "12",
+                "optName": "小",
+                "optCode": "123",
+                "optUrl": "1222.jpg",
+                "priceValue": "10",
+                "qty": "0",
+                "prodscn": "0"
+            }, {
+                "optKeyid": "12",
+                "optName": "小",
+                "optCode": "123",
+                "optUrl": "1222.jpg",
+                "priceValue": "10",
+                "qty": "0",
+                "prodscn": "0"
+            }, {
+                "optKeyid": "12",
+                "optName": "小",
+                "optCode": "123",
+                "optUrl": "1222.jpg",
+                "priceValue": "10",
+                "qty": "0",
+                "prodscn": "0"
+            }]
+        }],
+        "productDetailInfos": [{"keyid": "12", "propName": "功能", "propValue": "排风"}, {
+            "keyid": "12",
+            "propName": "功能",
+            "propValue": "排风"
+        }]
+    }
+
+    $(document).ready(function () {
+        editProduct.init();
+        editProduct.getClassify();
+    });
+    var editProduct = {
+        init: function () {
+           if(pid){
+               this.showInfo(data2);
+               this.getData(function (res) {
+                   editProduct.showInfo(res);
+               });
+           }else {
+               uploadIMG.init();
+           }
+        },
+        getClassify:function () {
+            $.ajax({
+                type:'post',
+                url:SERVER_URL+OPEN_API+'prodmanage/getprodgroup/'+authtoken,
+                contentType:'application/json;charset=UTF-8',
+                dataType:'json',
+                success:function (res) {
+                    if(res.rcd=='00'){
+                        classData = editProduct.forMatData(res.topProductGroup);
+                        $("#classify").citySelect({
+                            prov: "",
+                            city: "",
+                            dist: "",
+                            nodata: "none"
+                        });
+                    }else{
+                        alert(res.rmk);
+                    }
+                }
+            });
+        },
+        getData: function (callback) {
+            $.ajax({
+                type:'post',
+                url:SERVER_URL+OPEN_API+'prodmanage/getfirstgroup/'+authtoken,
+                contentType:'application/json;charset=UTF-8',
+                data:JSON.stringify(),
+                dataType:'json',
+                success:function (res) {
+                    if(res.rcd=='00'){
+                         callback(res);
+                    }else{
+                        alert(res.rmk);
+                    }
+                }
+            });
+        },
+        showInfo: function (res) {
+            imgList = res.prodImgAry || [];//详细图片
+            introduceImgs = res.prodIntrodImgAry;
+            var items = [
+                {n:".da-pro-num",c:res.prodCode || ''},
+                {n:".da-pro-name",c:res.memberCode || ''},
+                {n:".da-pro-price",c:res.prodPrice || ''},
+                {n:".da-origin-price",c:res.originalPrice || ''},
+                {n:".da-buying-price",c:res.buyingPrice || ''},
+                {n:".da-stock",c:res.prodQty|| ''},
+                {n:".da-pro-desc",c:res.prodDesc || ''},
+                {n:".da-mininum",c:res.minimum || ''}
+            ];
+            for(var i = 0;i < items.length;i++){
+                $(items[i].n).val(items[i].c);
+            }
+            if(res.hotSaleStatus){
+                $('.da-ishot').attr('checked',true);
+            }
+            if(res.newProdStatus){
+                $('.da-isnew').attr('checked',true);
+            }
+            if(res.promotionStatus){
+                $('.da-iscu').attr('checked',true);
+            }
+            $('.add-selected').html(template('selectList',{list:res.optGroupInfoAry}));
+            $('.propertyties').append(template('propertyList',{list:res.productDetailInfos}));
+            uploadIMG.init();
+        },
+        forMatData: function (data) {
+            var arrFirst = data || [];
+            var obj = {}, arr = [];
+            for (var i = 0; i < arrFirst.length; i++) {
+                var arr2 = [], obj1 = {};
+                var items = arrFirst[i].listChildGroupInfo || [];
+                for (var j = 0; j < items.length; j++) {
+                    var items2 = items[j].listChildGroupInfo || [];
+                    var arr3 = [], obj2 = {};
+                    for (var z = 0; z < items2.length; z++) {
+                        arr3.push({s: items2[z].parentProductGroupInfo.grpName,id:items2[z].parentProductGroupInfo.keyid})
+                    }
+                    obj2.n = items[j].parentProductGroupInfo.grpName;
+                    obj2.id = items[j].parentProductGroupInfo.keyid;
+                    if (arr3.length > 0)obj2.a = arr3;
+                    arr2.push(obj2);
+                }
+                if (arr2.length > 0)obj1.c = arr2;
+                obj1.p = arrFirst[i].parentProductGroupInfo.grpName;
+                obj1.id = arrFirst[i].parentProductGroupInfo.keyid;
+                arr.push(obj1);
+            }
+            obj.citylist = arr;
+            return obj;
+        }
+    }
+    $('.btn-commit').on('click', function () {
+     //   $('.fade').hide().css('opacity',0);
+        $(this).attr("data-dismiss","modal");
+        var name = $('.da-name').val();
+        var selectNum = $('.da-num').val();
+        if (name == '') {
+            return;
+        }
+        if(flag == 'addPro'){
+            $(_this).before(' <li  onclick="del(this)">'+name+'</li>');
+        }else if(flag == 'addSelect'){
+            if(selectNum=='')return;
+            $('.add-selected').append('<div class="select-list"><p class="margin-top clearfix" data-count="'+selectNum+'">' + name +":"+ '</p><ul>    <li class="add-click" data-toggle="modal" data-target="#myModal" onclick="add(this)">+</li> </ul></div>');
+        }else if(flag == 'properties'){
+            if(selectNum == '')return;
+            var html =  '<div class="clearfix property-list"><p class="col-lg-4 col-xs-4">'+name+'</p><p class="col-lg-4 col-xs-4">'+selectNum+'</p> <p class="col-lg-4 col-xs-4"></p></div>';
+            $('.propertyties').append(html);
+        }
+           //  $.post();
+
+    });
+    function add(e) {
+        $('.input-css').hide();
+        $('.modal-title').html('添加选择项属性');
+        $('.css-name').html('属性名');
+        flag = 'addPro';
+        $('.modal input').val('');
+        _this = e;
+    };
+    function del(e){
+        if(confirm('确定删除？')){
+            $(e).remove();
+        }
+    }
+    $('.btn-add-select').on('click',function () {
+        flag = 'addSelect';
+        $('.modal input').val('');
+        $('.input-css').show();
+        $('.modal-title').html('添加新选择项');
+        $('.css-name').html('名称');
+        $('.css-number').html('可选数量');
+    });
+
+    $('.btn-add-properties').on('click',function () {
+        $('.modal input').val('');
+        $('.modal-title').html('添加属性');
+        $('.css-name').html('属性名');
+        $('.input-css').show();
+        $('.css-number').html('属性描述');
+        flag = "properties";
+    });
+    $('.btn-confirm').on('click',function () {
+        var prodCode = $('.da-pro-num').val();
+        var memberCode = $('.da-pro-name').val();
+        var prodPrice = $('.da-pro-price').val();
+        var originalPrice = $('.da-origin-price').val();
+        var buyingPrice = $('.da-buying-price').val();
+        var prodQty = $('.da-stock').val();
+        var prodDesc = $('.da-pro-desc').val();
+        var minimum = $('.da-mininum').val();
+        var isHotSale = $('.da-ishot').is(':checked');
+        var isNew = $('.da-isnew').is(':checked');
+        var isPromotion = $('.da-iscu').is(':checked');
+        var firstLevel = $('.prov').find("option:selected").data('id');
+        var secondLevel = $('.city').find("option:selected").data('id');
+        var threeLevel = $('.dist').find("option:selected").data('id');
+        var classifyId = '';
+        if(firstLevel&&secondLevel&&threeLevel){
+            classifyId = threeLevel;
+        }else if(firstLevel&&secondLevel){
+            classifyId = secondLevel;
+        }else {
+            classifyId = firstLevel;
+        }
+        var selectList = $('.select-list') || [];
+        var items = [],obj={};
+        for(var i = 0; i < selectList.length;i++){
+            var groupName = $(selectList[i]).children('p').html();
+            var chooseCount =$(selectList[i]).children('p').data('count');
+            var li = $(selectList[i]).children('li');
+            var optionArr = [];
+            for(var j = 0;j < li.length-1;j++){
+                optionArr.push({optName:$(li[j]).html()});
+            }
+            obj.groupName = groupName;
+            obj.chooseCount = chooseCount;
+            obj.optionProductInfo = optionArr;
+            items.push(obj);
+        }
+
+        var propertiesList = $('.property-list');
+        var arrList = [];
+        for (var i = 0; i < propertiesList.length; i++) {
+            arrList.push({propName: $(propertiesList[i]).children('p').eq(0).html(), propValue:  $(propertiesList[i]).children('p').eq(1).html()})
+        }
+        var lxImgs = uploadIMG.getGroupList($(".upload-imgs")) || [];//展示图
+        var introduceImgs = uploadIMG.getGroupListOther($(".upload-imgs")) || [] ;//介绍图
+
+  /*      var lxImgs = $('.show-img').attr('src');
+        var introduceImgs = $('.introduce').attr('src');*/
+        var prodGroup = {
+            "keyid":classifyId
+        }
+
+        var obj = {
+            "memberCode":memberCode,
+            "prodCode": prodCode,
+            "prodPrice": prodPrice,
+            "originalPrice": originalPrice,
+            "buyingPrice": buyingPrice,
+            "prodQty":prodQty,
+            "minimum": minimum,
+            "prodDesc":prodDesc,
+            "productGroupInfo": prodGroup,
+            "hotSaleStatus": isHotSale,
+            "promotionStatus": isPromotion,
+            "newProdStatus": isNew,
+            "prodImgAry": lxImgs,
+            "prodIntrodImgAry":introduceImgs,
+            "optGroupInfoAry": items,
+            "productDetailInfos": arrList
+        };
+        $.ajax({
+            type:'post',
+            url:SERVER_URL+OPEN_API+'prodmanage/saveprod/'+authtoken,
+            contentType:'application/json;charset=UTF-8',
+            data:JSON.stringify(obj),
+            dataType:'json',
+            success:function (res) {
+                if(res.rcd=='00'){
+                   alert('添加成功！')
+                }else{
+                    alert(res.rmk);
+                }
+            }
+        });
+
+    });
+</script>
+</body>
+</html>

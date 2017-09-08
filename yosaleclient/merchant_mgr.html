@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link rel="icon" href="img/favicon.ico">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/ebiconfont/css/ebwebfont.css">
+    <!--  <link rel="stylesheet" href="css/ebiconfont/css/ebwebfont.css">
+     <link rel="stylesheet" href="css/global.css">-->
+    <link href="css/frames_page.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        input{
+            padding-left: 20px;
+            border: none;
+            height: 35px;
+            border-radius: 20px;
+
+        }
+        .box-shadow{
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            box-shadow:inset 0 1px 1px rgba(0,0,0,.075)
+        }
+        .btn-bg{
+            background: #f0832d;
+            color: white;
+            width: 100px;
+            border: none;
+            height: 35px;
+            border-radius: 20px;
+
+        }
+        th,td{
+            text-align: center;
+        }
+        thead{
+            background: #fff;
+        }
+
+    </style>
+</head>
+<body>
+<div class="settings-pane">
+    <a href="#" data-toggle="settings-pane" data-animate="true">&times;</a>
+    <div class="settings-pane-inner with-animation visible"></div>
+</div>
+<div class="page-container">
+    <div class="sidebar-menu fixed">
+        <div class="logo-env clearfix"></div>
+        <div class="sidebar-menu-inner"></div>
+        <div class="company-copyright"></div>
+    </div>
+    <div id="main-content">
+        <div class="container">
+            <div class="row">
+                <div id="content" class="col-lg-12 col-md-12">
+                    <div class="row">
+                        <nav class="nav user-info-nav">
+                            <div class="page-breadcrumb pull-left">
+                                <ul class="breadcrumb">
+                                    <li><a href="#" class="home-page-bread">首页</a></li>
+                                    <li><a href="#" onclick="history.go(-1)">返回上页</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="row">
+                        <div class="other-function margin">
+                            <div class="col-xs-3">
+                                <input type="text" class="box-shadow" placeholder="商户ID">
+                            </div>
+                            <div class="col-xs-3">
+                                <input type="text" class="box-shadow" placeholder="用户名">
+                            </div>
+                            <div class="col-xs-3">
+                                <input type="text"  class="box-shadow" placeholder="手机号">
+                            </div>
+                            <div class="col-xs-3">
+                               <button class="btn-bg">搜索</button>
+                                <button class="btn-bg">新增用户</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <!--begin-->
+                            <div class="page-body sys-cont" style="margin-top: 20px">
+                                <div class="data-list clearfix">
+                                    <div class="table-css">
+                                        <table class="table table-bordered table-striped table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>商户名</th>
+                                                <th>登录名</th>
+                                                <th>联系人</th>
+                                                <th>手机号</th>
+                                                <th>邮箱</th>
+                                                <th style="width:360px">操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr data-id="27214" data-rt="1">
+                                                <td>27214</td>
+                                                <td>三生物</td>
+                                                <td>2017-07-29 15:40:47</td>
+                                                <td>店铺</td>
+                                                <td>0.00</td>
+                                                <td style="text-align:center"><a href="#this"
+                                                                                 onclick="showList.resetPWD(27214,'三生物')"
+                                                                                 class="btn btn-default-m">重置密码</a>
+                                                    <a href="#" class="btn btn-default-m see-detail">查看详情</a></td>
+                                            </tr>
+                                            <tr data-id="15479" data-rt="1">
+                                                <td>15479</td>
+                                                <td>SZNY</td>
+                                                <td>2017-05-08 16:08:55</td>
+                                                <td>店铺</td>
+                                                <td>1228219.00</td>
+                                                <td style="text-align:center"><a href="#this"
+                                                                                 onclick="showList.resetPWD(15479,'SZNY')"
+                                                                                 class="btn btn-default-m">重置密码</a>
+                                                    <a href="#" class="btn btn-default-m see-detail">查看详情</a></td>
+                                            </tr>
+                                            <tr data-id="8142" data-rt="1">
+                                                <td>8142</td>
+                                                <td>NMWDL</td>
+                                                <td>2017-03-03 13:43:42</td>
+                                                <td>店铺</td>
+                                                <td>14918.00</td>
+                                                <td style="text-align:center"><a href="#this"
+                                                                                 onclick="showList.resetPWD(8142,'NMWDL')"
+                                                                                 class="btn btn-default-m">重置密码</a>
+                                                    <a href="#" class="btn btn-default-m see-detail">查看详情</a></td>
+                                            </tr>
+                                            <tr data-id="15477" data-rt="1">
+                                                <td>15477</td>
+                                                <td>NMTL</td>
+                                                <td>2017-04-21 13:57:12</td>
+                                                <td>店铺</td>
+                                                <td>1762052.00</td>
+                                                <td style="text-align:center"><a href="#this"
+                                                                                 onclick="showList.resetPWD(15477,'NMTL')"
+                                                                                 class="btn btn-default-m">重置密码</a>
+                                                    <a href="#" class="btn btn-default-m see-detail">查看详情</a></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <ul class="pagination ui-pageChange clearfix" maxpage="0.4" totalleaf="4"
+                                    currentpage="0">
+                                    <li class="pageInfo"><a>共4条记录</a></li>
+                                    <li class="active"><a title="第1页" href="?C1=1&amp;P=0">1</a></li>
+                                </ul>
+                            </div>
+                            <!--end-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery.js"></script>
+<!--<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
+<!--<script type="text/javascript" src="js/global.js"></script>-->
+<script type="text/javascript" src="js/TweenMax.min.js"></script>
+<script type="text/javascript" src="js/frames_page.js"></script>
+</body>
+</html>

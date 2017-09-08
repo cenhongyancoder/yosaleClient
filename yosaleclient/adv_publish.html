@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link rel="icon" href="img/favicon.ico">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/ebiconfont/css/ebwebfont.css">
+    <!--  <link rel="stylesheet" href="css/ebiconfont/css/ebwebfont.css">
+     <link rel="stylesheet" href="css/global.css">-->
+    <link href="css/frames_page.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        input{
+            padding-left: 20px;
+            border: none;
+            height: 35px;
+            border-radius: 20px;
+
+        }
+        .box{
+            margin: 0 auto;height: 200px;width: 500px
+        }
+        .box div{
+            margin-top: 20px;
+        }
+        .box label{
+            font-weight: 400;
+        }
+        textarea,input{
+            border: none;
+            width: 83%;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="settings-pane">
+    <a href="#" data-toggle="settings-pane" data-animate="true">&times;</a>
+    <div class="settings-pane-inner with-animation visible"></div>
+</div>
+<div class="page-container">
+    <div class="sidebar-menu fixed">
+        <div class="logo-env clearfix"></div>
+        <div class="sidebar-menu-inner"></div>
+        <div class="company-copyright"></div>
+    </div>
+    <div id="main-content">
+        <div class="container">
+            <div class="row">
+                <div id="content" class="col-lg-12 col-md-12">
+                    <div class="row">
+                        <nav class="nav user-info-nav">
+                            <div class="page-breadcrumb pull-left">
+                                <ul class="breadcrumb">
+                                    <li><a href="#" class="home-page-bread">首页</a></li>
+                                    <li><a href="#" onclick="history.go(-1)">返回上页</a></li>
+                                    <li><a href="#" >发布广告</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="row">
+                        <div class="other-function margin">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <!--begin-->
+                            <div class="page-body sys-cont" style="margin-top: 20px">
+                                <div  class="box">
+                                    <div>
+                                        <label>广告名称：</label>
+                                        <input type="text" class="da-name" placeholder="请输入广告名称">
+                                    </div>
+                                    <div>
+                                        <label style="    position: relative;top: -18px;">广告描述：</label>
+                                        <textarea type="text" class="da-detail" placeholder="请输入广告描述"></textarea>
+                                    </div>
+                                    <div>
+
+                                        <label>上传广告图片：</label>
+                                        <form id="fileForm" style="margin-left:150px" name="fileForm" action="http://192.168.0.104:8080/yosale/uploadFile.action" method="post" enctype="multipart/form-data" target="ajaxUpload">
+                                            <input type="file" class="da-img" id="fileName" name="files" onchange="upload(this)"  multiple="multiple"/>
+                                        </form>
+                                        <span id="returnMsg" style="margin-left:20px;font-size:15px;"></span>
+                                        <div id="img">
+                                        </div>
+                                    </div>
+                                    <div style="margin-right: 16px" >
+                                        <button style="width: 100%" class="btn-publish">确定发布</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/es/index.js" type="application/javascript"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!--<script type="text/javascript" src="js/global.js"></script>-->
+<script type="text/javascript" src="js/TweenMax.min.js"></script>
+<script type="text/javascript" src="js/frames_page.js"></script>
+
+<script>
+    $('body').append('<iframe onload="uploadOnload()" id="ajaxUpload" name="ajaxUpload" style="display:none"></iframe>');
+    var lastFileName ;
+    function upload(e){
+        var retMsg = $("#returnMsg");   // 提示信息
+        var fileName = $("#fileName").val();
+        var pos = fileName.lastIndexOf("\\");
+        fileName = fileName.substr(pos+1, fileName.length);  // 截取出文件名 因为会带路径
+        var img = $("#img");
+        img.empty();
+        img.append("<img style='width:100px; height=100px' src='"+getObjectURL($(e)[0].files[0])+"' />");
+        lastFileName = fileName;
+        if($.support.msie){             // 兼容ie
+            window.fileForm.submit();
+        }else{
+            $("#fileForm").submit();
+        }
+
+    }
+    function getObjectURL(file) {
+        var url = null ;
+        // console.log(file)
+        if (window.createObjectURL!=undefined) { // basic
+            url = window.createObjectURL(file) ;
+        } else if (window.URL!=undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file) ;
+        } else if (window.webkitURL!=undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file) ;
+        }
+        return url ;
+    }
+    var imgUrl = ''
+    function uploadOnload() {
+        if(lastFileName == undefined) return;          // 页面第一次出现的时候 也会执行这个方法
+        // var body = document.getElementById("ajaxUpload").contentDocument.body;   // iframe中的body
+        var body;
+        if (document.all){ // IE
+            body = document.frames["ajaxUpload"].document.body;
+        }else{ // 标准
+            body = document.getElementById("ajaxUpload").contentDocument.body;
+        }
+        var retMsg = $("#returnMsg");
+        /*   retMsg.text(body.textContent);    // 显示返回值*/
+        imgUrl = body.textContent;
+        console.log(body);
+    }
+
+    /*点击确定发布*/
+    $('.btn-publish').on('click',function () {
+        var name = $('.da-name').val();
+        var detail = $('.da-detail').val();
+        if(name == ''){
+            showElTip('.da-name','请输入广告名称！');
+            return ;
+        }else if(imgUrl =='' || imgUrl==undefined){
+            showElTip('.da-img','请上传一张图片！');
+            return ;
+        }
+        var authtoken = localStorage.getItem('token');
+        console.log(imgUrl);
+        var obj = {
+            advName:name,
+            advDesc:detail,
+            advPicUrl:JSON.parse(imgUrl)[0]
+        };
+        console.log(obj);
+        $.ajax({
+            type:'post',
+            url:SERVER_URL+OPEN_API+'yosalemanage/saveadv/'+authtoken,
+            contentType:'application/json;charset=UTF-8',
+            data:JSON.stringify(obj),
+            dataType:'json',
+            success:function (res) {
+                if(res.rcd=='00'){
+                    alert('发布成功！');
+                    location.href = 'adv_list.html';
+                }else{
+                    alert(res.rmk);
+                }
+            }
+        });
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link rel="icon" href="img/favicon.ico">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/ebiconfont/css/ebwebfont.css">
+    <!--  <link rel="stylesheet" href="css/ebiconfont/css/ebwebfont.css">
+     <link rel="stylesheet" href="css/global.css">-->
+    <link href="css/frames_page.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        input{
+            padding-left: 20px;
+            height: 35px;
+
+        }
+        .box-shadow{
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            box-shadow:inset 0 1px 1px rgba(0,0,0,.075)
+        }
+        .btn-bg{
+            background: #f0832d;
+            color: white;
+            width: 100px;
+            border: none;
+            height: 35px;
+            border-radius: 20px;
+
+        }
+        th,td{
+            text-align: center;
+        }
+        thead{
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="top: 50px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close  btn-close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    添加分类
+                </h4>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="da-input">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-close" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary btn-commit">
+                    确认
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<div class="settings-pane">
+    <a href="#" data-toggle="settings-pane" data-animate="true">&times;</a>
+    <div class="settings-pane-inner with-animation visible"></div>
+</div>
+<div class="page-container">
+    <div class="sidebar-menu fixed">
+        <div class="logo-env clearfix"></div>
+        <div class="sidebar-menu-inner"></div>
+        <div class="company-copyright"></div>
+    </div>
+    <div id="main-content">
+        <div class="container">
+            <div class="row">
+                <div id="content" class="col-lg-12 col-md-12">
+                    <div class="row">
+                        <nav class="nav user-info-nav">
+                            <div class="page-breadcrumb pull-left">
+                                <ul class="breadcrumb">
+                                    <li><a href="#" class="home-page-bread">首页</a></li>
+                                    <li><a href="#" onclick="history.go(-1)">返回上页</a></li>
+                                    <li><a href="#" >类型管理</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="row">
+                        <div class="other-function margin">
+                            <div style="float: right;margin-right: 16px" >
+                                <button class="btn-publish bg-primary btn">添加三级分类</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <!--begin-->
+                            <div class="page-body sys-cont" style="margin-top: 20px">
+                                <div class="data-list clearfix">
+                                    <div class="table-css">
+                                        <table class="table da-list table-bordered table-striped table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>序号</th>
+                                                <th>排序</th>
+                                                <th>产品类型</th>
+                                                <th style="width:360px">操作</th>
+                                            </tr>
+                                            </thead>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/es/index.js"></script>
+<script type="text/javascript" src="js/template.js"></script>
+<script type="text/javascript" src="js/TweenMax.min.js"></script>
+<script type="text/javascript" src="js/frames_page.js"></script>
+<script type="text/html" id="list">
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>排序</th>
+        <th>产品类型</th>
+        <th style="width:360px">操作</th>
+    </tr>
+    </thead>
+    {{each list as value i}}
+    <tr data-id="{{value.keyid}}" class="da-id">
+        <td>{{i+1}}</td>
+        <td>
+            {{if i==0}}
+            <span class="glyphicon glyphicon-arrow-down btn-down"></span>
+            {{else}}
+            {{if i==list.length-1}}
+            <span class="glyphicon glyphicon-arrow-up btn-up"></span>
+            {{else}}
+            <span class="glyphicon glyphicon-arrow-up btn-up" style=""></span><span class="glyphicon btn-down glyphicon-arrow-down"></span>
+
+
+            {{/if}}
+
+            {{/if}}
+
+        </td>
+        <td class="da-name">{{value.grpName}}</td>
+
+        <td style="text-align:center"><a href="#"
+                                         class="btn btn-default-m btn-edit">修改</a>
+            <a href="#" class="btn btn-default-m see-detail btn-delete">删除</a>
+
+        </td>
+    </tr>
+
+    {{/each}}
+</script>
+<script>
+
+
+    var authtoken = localStorage.getItem('token');
+    var parentId = '';
+    var keyid = '';
+    $(document).ready(function () {
+        parentId = MOPG['id'];
+        getData();
+    });
+
+    function getData() {
+
+        var obj = {
+            reqPage:1,
+            parentKeyId:parentId
+        };
+
+        $.ajax({
+            type:'post',
+            url:SERVER_URL+OPEN_API+'prodmanage/getthirdgroup/'+authtoken,
+            contentType:'application/json;charset=UTF-8',
+            data:JSON.stringify(obj),
+            dataType:'json',
+            success:function (res) {
+                if(res.rcd=='00'){
+                    showList(res.productGroupInfos);
+                }else{
+                    alert(res.rmk);
+                }
+            }
+        });
+    }
+
+
+    function showList(data) {
+        var items = data || [];
+        for(var i = 0;i < items.length;i++){
+            items[i].listChildGroupInfo = obj2str( items[i].listChildGroupInfo);
+        }
+        $('.da-list').html(template('list',{list:items}));
+    }
+    /*修改*/
+    $('body').on('click','.btn-edit',function () {
+        _this = this;
+        $('.fade').css('opacity', 1);
+        $('#myModal').show();
+        $('input').val($(this).parents('tr').find('.da-name').html());
+        keyid = $(this).parents('.da-id').data('id');
+    })
+    /*删除*/
+    $('body').on('click','.btn-delete',function () {
+        if(confirm('确认删除?')){
+            var id = $(this).parents('.da-id').data('id');
+            var keyids =  new Array();
+            keyids[0] = id;
+            var obj = {
+                keyids:keyids,
+            };
+            $.ajax({
+                type:'post',
+                url:SERVER_URL+OPEN_API+'prodmanage/delprodgroup/'+authtoken,
+                contentType:'application/json;charset=UTF-8',
+                data:JSON.stringify(obj),
+                dataType:'json',
+                success:function (res) {
+                    if(res.rcd=='01'){
+                        alert(res.rmk);
+                    }else{
+                        window.location.reload();
+                    }
+                }
+            });
+        }
+    })
+    /*新增*/
+    var _this;
+    $('body').on('click','.btn-publish',function () {
+        _this = this;
+        $('.fade').css('opacity', 1);
+        $('#myModal').show();
+        keyid = '';
+    });
+    /*确认*/
+    $('body').on('click', '.btn-commit', function () {
+        var name = $('input').val();
+        if(name == ''){
+            return ;
+        }
+
+        var obj = {
+            keyid:keyid,
+            parentKeyid:parentId,
+            grpName:name
+        };
+
+        $.ajax({
+            type:'post',
+            url:SERVER_URL+OPEN_API+'prodmanage/saveprodgroup/'+authtoken,
+            contentType:'application/json;charset=UTF-8',
+            data:JSON.stringify(obj),
+            dataType:'json',
+            success:function (res) {
+                if(res.rcd=='01'){
+                    alert(res.rmk);
+                }else{
+                    window.location.reload();
+                }
+            }
+        });
+    });
+    /*关闭*/
+    $('body').on('click', '.btn-close', function () {
+        $('.fade').css('opacity', 0);
+        $('#myModal').hide()
+    });
+    /*up*/
+    $('body').on('click', '.btn-up', function () {
+        var id = $(this).parents('.da-id').data('id');
+        var obj = {
+            keyid:id,
+            sortAsc:true,
+        };
+
+        $.ajax({
+            type:'post',
+            url:SERVER_URL+OPEN_API+'prodmanage/sortprodgroup/'+authtoken,
+            contentType:'application/json;charset=UTF-8',
+            data:JSON.stringify(obj),
+            dataType:'json',
+            success:function (res) {
+                if(res.rcd=='01'){
+                    alert(res.rmk);
+                }else{
+                    window.location.reload();
+                }
+            }
+        });
+    });
+    /*down*/
+    $('body').on('click', '.btn-down', function () {
+        var id = $(this).parents('.da-id').data('id');
+        var obj = {
+            keyid:id,
+            sortAsc:false,
+        };
+
+        $.ajax({
+            type:'post',
+            url:SERVER_URL+OPEN_API+'prodmanage/sortprodgroup/'+authtoken,
+            contentType:'application/json;charset=UTF-8',
+            data:JSON.stringify(obj),
+            dataType:'json',
+            success:function (res) {
+                if(res.rcd=='01'){
+                    alert(res.rmk);
+                }else{
+                    window.location.reload();
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

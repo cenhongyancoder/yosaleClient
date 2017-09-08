@@ -1,0 +1,45 @@
+.content .row div {
+  border: 1px solid #e3e3e3;
+  margin-left: 48px;
+  margin-right: 48px;
+  margin-bottom: 20px;
+}
+.content .row div p {
+  margin-top: 20px;
+  text-align: center;
+}
+.content .row div p label {
+  font-size: 16px;
+  display: inline-block;
+  text-align: left;
+  height: 25px;
+  width: 80px;
+  text-align: right;
+}
+.content .row div p input {
+  width: 30%;
+  margin-left: 33px;
+  padding: 5px;
+}
+.content .row div button {
+  text-align: center;
+  width: 40%;
+  padding: 14px;
+  border-radius: 10px;
+  background: #f0832d;
+  color: white;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: 50px;
+  font-size: 16px;
+}
+.content .row div h4 {
+  text-align: center;
+  margin-left: -118px;
+  margin-top: 38px;
+}
+input{
+  border: 1px solid gray;
+  background: #fff;
+}
+
